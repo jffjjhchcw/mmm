@@ -30,10 +30,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            git wget curl unzip xz-utils zip bc bison build-essential \
+            git wget curl unzip xz-utils zip bc bison build-full \
             ccache flex g++-multilib gcc-multilib gnupg gperf imagemagick \
             lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool \
-            libncurses5-dev libssl-dev lsof python3 python3-pip openjdk-17-jdk
+            libncurses5-dev libssl-dev lsof python3 python3-pip openjdk-17-jdk \
+            fuse2fs erofsfuse
             
       - name: Setup Repo
         run: |
@@ -55,14 +56,16 @@ jobs:
         run: |
           cp -r ${{ github.workspace }}/device_tree/pgjm10 ~/android/infinity-x/device/oppo/
           
-      - name: Download vendor blobs
+      - name: Download vendor blobs from Release
         run: |
-          # 需要你手动上传 vendor_a.img 到 Release 或 Google Drive
-          # 方法1: 如果有 vendor_a.img 在 Release
-          # 方法2: 从 Google Drive 下载 (需要你自己配置)
-          echo "注意: 需要手动添加 vendor blobs!"
-          echo "请在设备树中添加 vendor 文件夹，或修改此步骤"
-          # 示例: wget -O vendor.img "你的vendor下载链接"
+          # 下载 vendor_a.img 从 Release
+          wget -O vendor_a.img \
+            "https://github.com/jffjjhchcw/mmm/releases/download/v1/vendor_a.img"
+          
+          # 挂载并提取
+          mkdir -p vendor_mount
+          erofsfuse vendor_a.img vendor_mount 2>/dev/null || fuse2fs vendor_a.img vendor_mount
+          cp -r vendor_mount/* ~/android/infinity-x/device/oppo/pgjm10/vendor/
           
       - name: Setup ccache
         run: |
