@@ -42,13 +42,24 @@ jobs:
           echo "~/bin" >> $GITHUB_PATH
           ~/bin/repo --version
           
+      - name: Debug info
+        run: |
+          echo "=== System Info ==="
+          df -h
+          free -h
+          nproc
+          
       - name: Clone Infinity X source
         run: |
           export PATH=~/bin:$PATH
           mkdir -p ~/android/infinity-x
           cd ~/android/infinity-x
-          repo init --no-repo-verify -u https://github.com/ProjectInfinity-X/manifest.git -b ${{ github.event.inputs.branch || '16' }} || exit 1
-          repo sync -c -j8 --no-tags --no-clone-bundle --retry=3 || exit 1
+          echo "=== Initializing repo ==="
+          repo init --no-repo-verify -u https://github.com/ProjectInfinity-X/manifest.git -b ${{ github.event.inputs.branch || '16' }} 2>&1 || { echo "Repo init failed"; cat .repo/manifest.xml 2>/dev/null || true; exit 1; }
+          echo "=== Syncing repo ==="
+          repo sync -c -j8 --no-tags --no-clone-bundle --retry=3 2>&1 || { echo "Repo sync failed"; exit 1; }
+          echo "=== Repo sync complete ==="
+          ls -la
         shell: bash
         timeout-minutes: 300
       
