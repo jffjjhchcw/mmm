@@ -12,9 +12,8 @@ on:
         options:
           - '16'
           - '15'
-  push:
-    branches:
-      - main
+
+# 不要自动运行，取消 push 触发
 
 jobs:
   build:
