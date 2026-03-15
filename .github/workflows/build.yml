@@ -30,42 +30,33 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            git wget curl unzip xz-utils zip bc bison build-full \
+            git wget curl unzip xz-utils zip bc bison build-essential \
             ccache flex g++-multilib gcc-multilib gnupg gperf imagemagick \
             lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool \
-            libncurses5-dev libssl-dev lsof python3 python3-pip openjdk-17-jdk \
-            fuse2fs erofsfuse
+            libncurses5-dev libssl-dev lsof python3 python3-pip openjdk-17-jdk
             
       - name: Setup Repo
         run: |
           mkdir -p ~/bin
-          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+          curl -sSL https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
           chmod a+x ~/bin/repo
           echo "~/bin" >> $GITHUB_PATH
+          ~/bin/repo --version
           
       - name: Clone Infinity X source
         run: |
+          export PATH=~/bin:$PATH
           mkdir -p ~/android/infinity-x
           cd ~/android/infinity-x
-          repo init --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest.git -b ${{ github.event.inputs.branch || '16' }}
-          repo sync -c -j$(nproc) --force-sync --no-tags --no-clone-bundle
+          repo init --no-repo-verify -u https://github.com/ProjectInfinity-X/manifest.git -b ${{ github.event.inputs.branch || '16' }} || exit 1
+          repo sync -c -j8 --no-tags --no-clone-bundle --retry=3 || exit 1
         shell: bash
         timeout-minutes: 300
       
       - name: Copy device tree
         run: |
           cp -r ${{ github.workspace }}/device_tree/pgjm10 ~/android/infinity-x/device/oppo/
-          
-      - name: Download vendor blobs (if available)
-        run: |
           mkdir -p ~/android/infinity-x/device/oppo/pgjm10/vendor
-          wget -O vendor_a.img \
-            "https://github.com/jffjjhchcw/mmm/releases/download/v1/vendor_a.img" \
-            2>/dev/null && {
-              mkdir -p vendor_mount
-              erofsfuse vendor_a.img vendor_mount 2>/dev/null || fuse2fs vendor_a.img vendor_mount
-              cp -r vendor_mount/* ~/android/infinity-x/device/oppo/pgjm10/vendor/ 2>/dev/null
-            } || echo "Vendor not found, will build without it"
           
       - name: Setup ccache
         run: |
