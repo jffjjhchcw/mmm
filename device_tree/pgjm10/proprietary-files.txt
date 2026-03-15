@@ -1,0 +1,123 @@
+# Proprietary files for OPPO K10 5G (PGJM10)
+# Auto-generated from vendor_a.img extraction
+
+# Libraries
+vendor/lib64/libc++.so:vendor/lib64/libc++.so
+vendor/lib64/libstagefright.so:vendor/lib64/libstagefright.so
+vendor/lib64/libmedia.so:vendor/lib64/libmedia.so
+vendor/lib64/libutils.so:vendor/lib64/libutils.so
+vendor/lib64/libbinder.so:vendor/lib64/libbinder.so
+
+# Audio
+vendor/lib64/hw/audio.primary.mt6895.so:vendor/lib64/hw/audio.primary.mt6895.so
+vendor/lib64/hw/audio.usb.default.so:vendor/lib64/hw/audio.usb.default.so
+vendor/lib64/hw/audio.bluetooth.default.so:vendor/lib64/hw/audio.bluetooth.default.so
+
+# Graphics
+vendor/lib64/hw/android.hardware.graphics.composer@2.4-impl.so:vendor/lib64/hw/android.hardware.graphics.composer@2.4-impl.so
+vendor/lib64/hw/android.hardware.graphics.allocator@3.0-impl.so:vendor/lib64/hw/android.hardware.graphics.allocator@3.0-impl.so
+vendor/lib64/hw/memtrack.mt6895.so:vendor/lib64/hw/memtrack.mt6895.so
+
+# Camera
+vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so:vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so
+
+# Bluetooth
+vendor/lib64/hw/android.hardware.bluetooth@1.1-impl.so:vendor/lib64/hw/android.hardware.bluetooth@1.1-impl.so
+
+# Fingerprint
+vendor/lib64/hw/android.hardware.biometrics.fingerprint@2.1.so:vendor/lib64/hw/android.hardware.biometrics.fingerprint@2.1.so
+
+# NFC
+vendor/lib64/hw/android.hardware.nfc@1.2.so:vendor/lib64/hw/android.hardware.nfc@1.2.so
+
+# Power
+vendor/lib64/hw/android.hardware.power@1.5-impl.so:vendor/lib64/hw/android.hardware.power@1.5-impl.so
+
+# Sensors
+vendor/lib64/hw/android.hardware.sensors@2.0-impl-mt6895.so:vendor/lib64/hw/android.hardware.sensors@2.0-impl-mt6895.so
+
+# WiFi
+vendor/lib64/hw/android.hardware.wifi@1.0-service.so:vendor/lib64/hw/android.hardware.wifi@1.0-service.so
+
+# DRM
+vendor/lib64/android.hardware.drm@1.4.so:vendor/lib64/android.hardware.drm@1.4.so
+
+# Keymaster
+vendor/lib64/android.hardware.keymaster@4.0.so:vendor/lib64/android.hardware.keymaster@4.0.so
+
+# Gatekeeper
+vendor/lib64/android.hardware.gatekeeper@1.0.so:vendor/lib64/android.hardware.gatekeeper@1.0.so
+
+# Boot Control
+vendor/lib64/android.hardware.boot@1.2.so:vendor/lib64/android.hardware.boot@1.2.so
+
+# Health
+vendor/lib64/android.hardware.health@2.1.so:vendor/lib64/android.hardware.health@2.1.so
+
+# Vibrator
+vendor/lib64/hw/vibrator.mt6895.so:vendor/lib64/hw/vibrator.mt6895.so
+
+# Audio HAL
+vendor/bin/hw/android.hardware.audio@7.0-service:vendor/bin/hw/android.hardware.audio@7.0-service
+vendor/bin/hw/android.hardware.audio.service:vendor/bin/hw/android.hardware.audio.service
+
+# Media
+vendor/bin/mediaserver:vendor/bin/mediaserver
+
+# Camera
+vendor/bin/hw/android.hardware.camera.provider@2.4-service:vendor/bin/hw/android.hardware.camera.provider@2.4-service
+
+# NFC
+vendor/bin/hw/android.hardware.nfc@1.2-service:vendor/bin/hw/android.hardware.nfc@1.2-service
+
+# fingerprint
+vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service:vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
+
+# Thermal
+vendor/bin/thermal_manager:vendor/bin/thermal_manager
+
+# Power
+vendor/bin/hw/android.hardware.power@1.5-service:vendor/bin/hw/android.hardware.power@1.5-service
+
+# Bluetooth
+vendor/bin/hw/android.hardware.bluetooth@1.1-service:vendor/bin/hw/android.hardware.bluetooth@1.1-service
+vendor/bin/hw/bluetooth.BluetoothAudioSoC:vendor/bin/hw/bluetooth.BluetoothAudioSoC
+
+# WiFi
+vendor/bin/hw/android.hardware.wifi.supplicant@1.0-service:vendor/bin/hw/android.hardware.wifi.supplicant@1.0-service
+
+# Configs
+vendor/etc/audio_policy_configuration.xml:vendor/etc/audio_policy_configuration.xml
+vendor/etc/media_codecs.xml:vendor/etc/media_codecs.xml
+vendor/etc/media_codecs_performance.xml:vendor/etc/media_codecs_performance.xml
+vendor/etc/media_profiles.xml:vendor/etc/media_profiles.xml
+vendor/etc/audio_tuning_mtv.txt:vendor/etc/audio_tuning_mtv.txt
+vendor/etc/audio_param/mtk_volume_param.txt:vendor/etc/audio_param/mtk_volume_param.txt
+vendor/etc/firmware:vendor/etc/firmware
+
+# Init scripts
+vendor/etc/init/android.hardware.audio@7.0-service.rc:vendor/etc/init/android.hardware.audio@7.0-service.rc
+vendor/etc/init/android.hardware.audio.service.rc:vendor/etc/init/android.hardware.audio.service.rc
+vendor/etc/init/android.hardware.camera.provider@2.4-service.rc:vendor/etc/init/android.hardware.camera.provider@2.4-service.rc
+vendor/etc/init/android.hardware.nfc@1.2-service.rc:vendor/etc/init/android.hardware.nfc@1.2-service.rc
+vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc:vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
+vendor/etc/init/android.hardware.power@1.5-service.rc:vendor/etc/init/android.hardware.power@1.5-service.rc
+vendor/etc/init/android.hardware.bluetooth@1.1-service.rc:vendor/etc/init/android.hardware.bluetooth@1.1-service.rc
+vendor/etc/init/android.hardware.wifi.supplicant@1.0-service.rc:vendor/etc/init/android.hifi-supplicant.rc
+vendor/etc/init/vendor.mediatek.hardware.pq@2.6-service.rc:vendor/etc/init/vendor.mediatek.hardware.pq@2.6-service.rc
+vendor/etc/init/thermal_manager.rc:vendor/etc/init/thermal_manager.rc
+
+# VINTF manifest
+vendor/etc/vintf/manifest/android.hardware.audio@7.0.xml:vendor/etc/vintf/manifest/android.hardware.audio@7.0.xml
+vendor/etc/vintf/manifest/android.hardware.audio.service.xml:vendor/etc/vintf/manifest/android.hardware.audio.service.xml
+vendor/etc/vintf/manifest/android.hardware.camera.provider@2.4.xml:vendor/etc/vintf/manifest/android.hardware.camera.provider@2.4.xml
+vendor/etc/vintf/manifest/android.hardware.nfc@1.2.xml:vendor/etc/vintf/manifest/android.hardware.nfc@1.2.xml
+vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1.xml:vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1.xml
+vendor/etc/vintf/manifest/android.hardware.power@1.5.xml:vendor/etc/vintf/manifest/android.hardware.power@1.5.xml
+vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml:vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
+
+# Properties
+vendor/build.prop:vendor/build.prop
+
+# ODM
+vendor/odm:vendor/odm

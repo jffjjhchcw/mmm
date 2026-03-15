@@ -1,0 +1,39 @@
+# System properties for OPPO K10 5G (PGJM10)
+
+# Audio
+audio.offload.min.duration.secs=30
+
+# Camera
+camera.disable_zsl_mode=1
+
+# Display
+ro.surface_flinger.use_color_management=true
+ro.surface_flinger.protected_contents=true
+
+# DRM
+drm.service.enabled=1
+
+# Media
+media.stagefright.enable-player=true
+media.stagefright.enable-meta=true
+media.stagefright.enable-scan=true
+media.stagefright.enable-http=true
+media.stagefright.enable-rtsp=true
+media.stagefright.enable-record=false
+
+# Net
+net.tcp.default_init_rwnd=57
+
+# Performance
+profiler.force_disable_elastic=false
+profiler.force_disable_err_notification=false
+profiler.force_disable_systrace=false
+
+# Power
+ro.powerprofiles.supported=true
+
+# Radio
+persist.radio.multisim.config=dsds
+
+# WiFi
+wifi.interface=wlan0

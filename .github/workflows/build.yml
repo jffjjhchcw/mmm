@@ -1,0 +1,78 @@
+# GitHub Actions Workflow for Infinity X
+name: Build Infinity X
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build'
+        required: true
+        default: '16'
+        type: choice
+        options:
+          - '16'
+          - '15'
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git wget curl unzip xz-utils zip bc bison build-essential \
+            ccache flex g++-multilib gcc-multilib gnupg gperf imagemagick \
+            lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool \
+            libncurses5-dev libssl-dev lsof python3 python3-pip openjdk-17-jdk
+            
+      - name: Setup Repo
+        run: |
+          mkdir -p ~/bin
+          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+          chmod a+x ~/bin/repo
+          echo "~/bin" >> $GITHUB_PATH
+          
+      - name: Clone Infinity X source
+        run: |
+          mkdir -p ~/android/infinity-x
+          cd ~/android/infinity-x
+          repo init --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest.git -b ${{ github.event.inputs.branch || '16' }}
+          repo sync -c -j$(nproc) --force-sync --no-tags --no-clone-bundle
+        shell: bash
+        timeout-minutes: 300
+      
+      - name: Copy device tree
+        run: |
+          cp -r ${{ github.workspace }}/device_tree/pgjm10 ~/android/infinity-x/device/oppo/
+          
+      - name: Setup ccache
+        run: |
+          export USE_CCACHE=1
+          export CCACHE_DIR=~/.ccache
+          ccache -M 100G
+          
+      - name: Build ROM
+        run: |
+          cd ~/android/infinity-x
+          source build/envsetup.sh
+          lunch infinity_pgjm10-eng
+          mka bacon -j$(nproc)
+        shell: bash
+        timeout-minutes: 600
+      
+      - name: Upload ROM
+        uses: actions/upload-artifact@v4
+        with:
+          name: Infinity-X-PGJM10
+          path: ~/android/infinity-x/out/target/product/pgjm10/*.zip
+          retention-days: 5

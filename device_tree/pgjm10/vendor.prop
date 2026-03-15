@@ -1,0 +1,28 @@
+# Vendor properties for OPPO K10 5G (PGJM10)
+
+# MediaTek
+ro.mediatek.platform=mt6895
+ro.mediatek.chip_ver=S01
+ro.mediatek.version.branch=alps-locha-mp2
+ro.mediatek.version.sdk=2
+
+# Boot
+ro.boot.bootreason=wdt,reboot
+
+# Hardware
+ro.hardware=mt6895
+ro.hardware.platform=mt6895
+
+# Vendor
+ro.vendor.mediatek.platform=mt6895
+ro.vendor.mediatek.version.branch=alps-locha-mp2
+
+# Features
+ro.feature.audio.spk.stereo=true
+ro.feature.backlight.linear_mode=true
+
+# GPU
+ro.gpu.availablefreq=850000000
+
+# NFC
+ro.nfc.port=I2C

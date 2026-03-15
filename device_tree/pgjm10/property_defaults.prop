@@ -1,0 +1,13 @@
+# Property defaults for OPPO K10 5G (PGJM10)
+# These properties will be set as defaults
+
+persist.vendor.vilte.call.enable=1
+persist.vendor.vt.smsapp.enable=1
+persist.vendor.ims.enable=1
+persist.vendor.operator.optr=OPGM
+persist.vendor.spec.name=full_oppo6779_19301
+persist.vendor.spec.version=11.A.05
+persist.vendor.country=china
+persist.vendor.operator.seg=1
+persist.vendor.service.brcm.wlan=PostpaidSDK
+persist.vendor.sys.appfresh=1
