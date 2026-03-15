@@ -55,6 +55,15 @@ jobs:
         run: |
           cp -r ${{ github.workspace }}/device_tree/pgjm10 ~/android/infinity-x/device/oppo/
           
+      - name: Download vendor blobs
+        run: |
+          # 需要你手动上传 vendor_a.img 到 Release 或 Google Drive
+          # 方法1: 如果有 vendor_a.img 在 Release
+          # 方法2: 从 Google Drive 下载 (需要你自己配置)
+          echo "注意: 需要手动添加 vendor blobs!"
+          echo "请在设备树中添加 vendor 文件夹，或修改此步骤"
+          # 示例: wget -O vendor.img "你的vendor下载链接"
+          
       - name: Setup ccache
         run: |
           export USE_CCACHE=1
