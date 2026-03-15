@@ -56,16 +56,16 @@ jobs:
         run: |
           cp -r ${{ github.workspace }}/device_tree/pgjm10 ~/android/infinity-x/device/oppo/
           
-      - name: Download vendor blobs from Release
+      - name: Download vendor blobs (if available)
         run: |
-          # 下载 vendor_a.img 从 Release
+          mkdir -p ~/android/infinity-x/device/oppo/pgjm10/vendor
           wget -O vendor_a.img \
-            "https://github.com/jffjjhchcw/mmm/releases/download/v1/vendor_a.img"
-          
-          # 挂载并提取
-          mkdir -p vendor_mount
-          erofsfuse vendor_a.img vendor_mount 2>/dev/null || fuse2fs vendor_a.img vendor_mount
-          cp -r vendor_mount/* ~/android/infinity-x/device/oppo/pgjm10/vendor/
+            "https://github.com/jffjjhchcw/mmm/releases/download/v1/vendor_a.img" \
+            2>/dev/null && {
+              mkdir -p vendor_mount
+              erofsfuse vendor_a.img vendor_mount 2>/dev/null || fuse2fs vendor_a.img vendor_mount
+              cp -r vendor_mount/* ~/android/infinity-x/device/oppo/pgjm10/vendor/ 2>/dev/null
+            } || echo "Vendor not found, will build without it"
           
       - name: Setup ccache
         run: |
